@@ -32,22 +32,22 @@ Welcome back! This tutorial outlines the implementation of on-premises Active Di
 2. Set Domain Controller’s NIC Private IP address to be static
 DC-1 > Networking > NIC > IP Configurations
 
-![vivaldi_zDAEQAVoDh](https://user-images.githubusercontent.com/109401839/212756392-d05a4c3b-610c-4fe8-a5e8-1e31e86da7e3.png)
+![](https://github.com/odiraonodugo/image/blob/main/w.png)
 
 3. Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group and Vnet that was created in the DC-1 step.
 4. Ensure that both VMs are in the same Vnet [you can check the topology with Network Watcher]
 Here is an illustration of what we are doing: 
 
-![vivaldi_z3kENJuYuV](https://user-images.githubusercontent.com/109401839/213212076-117f26c0-c06f-4bb0-871a-45a97f293acf.png)
+![](https://github.com/odiraonodugo/image/blob/main/Screenshot%202023-04-06%20181812.png)
 
 
-![vivaldi_QbUpS9XsXc](https://user-images.githubusercontent.com/109401839/212757249-70c7c150-9627-408f-a285-53b0f9d34a09.png)
+![](https://github.com/odiraonodugo/image/blob/main/g%20(2).png)
 
 <h2>Ensure Connection between Client and Domain Controller<h2>
 
 1. Login to Client-1 with Remote Desktop and ping DC-1’s private IP address with ping -t <ip address> (perpetual ping)
 
-![vivaldi_3DGaaVQRmB](https://user-images.githubusercontent.com/109401839/213212386-519dc0bd-6913-49f1-b3e3-8bbb260741a5.png)
+![](https://github.com/odiraonodugo/image/blob/main/5.png)
 
 Oh! Notice we are getting a "Request timed out." Let us fix that. 
 
@@ -57,12 +57,12 @@ Oh! Notice we are getting a "Request timed out." Let us fix that.
 
 - Enable "Core Networking Diagnostics - ICMP Echo Request (ICMPv4-In) Private and Domain Profiles. 2 Inbound Rules.
 
-![Inkedvivaldi_Gb9rFL8rhC](https://user-images.githubusercontent.com/109401839/213214025-94b0bfb0-f017-4e8b-8676-d01ffeb9ab93.jpg)
+![](https://github.com/odiraonodugo/image/blob/main/o.png)
 
 
 3. Check back at Client-1 to see the ping succeed
 
-![vivaldi_WbtokOOBck](https://user-images.githubusercontent.com/109401839/213214146-018e77d5-98a4-4256-91fd-16647ff58006.png)
+![](https://github.com/odiraonodugo/image/blob/main/u.png)
 
 Look at that beautiful traffic. Now its time to ... 
 
@@ -74,23 +74,23 @@ Look at that beautiful traffic. Now its time to ...
 
 - Server Manager > "Add Roles and Features" > Check "Active Directory Domain Services"
 
-![vivaldi_od5BgUKG6G](https://user-images.githubusercontent.com/109401839/213214935-0fe230d0-60be-431a-bf31-53cfc50748b9.png)
+![](https://github.com/odiraonodugo/image/blob/main/Screenshot%202023-04-06%20191551.png)
 
 2. Promote as a DC: Setup a new forest as mydomain.com (can be anything, just remember what it is)
 
-![2023-01-18 09 37 20 coursecareers com a3928ff24e0f](https://user-images.githubusercontent.com/109401839/213215535-f43842d0-f1ab-4c6a-91d1-18d8a9bdff06.jpg)
+![](https://github.com/odiraonodugo/image/blob/main/8.png)
 
-![2023-01-18 09 38 10 coursecareers com 78e39ae4181d](https://user-images.githubusercontent.com/109401839/213215738-c6379380-e5b8-438b-95a8-6906a16ff339.jpg)
+![](https://github.com/odiraonodugo/image/blob/main/9.png)
 
 3. Restart and then log back into DC-1 as user: mydomain.com\labuser
 
-![vivaldi_xJc36FTsPS](https://user-images.githubusercontent.com/109401839/213216324-dccbe8d1-3791-4eea-8609-6643d27f1bc9.png)
+![](https://github.com/odiraonodugo/image/blob/main/p.png)
 
-![vivaldi_ADY0CCC3v8](https://user-images.githubusercontent.com/109401839/213217001-5c300c3f-f194-4df9-bb68-b4fb464e500c.png)
+![](https://github.com/odiraonodugo/image/blob/main/c.pngg)
 
 4. In Active Directory Users and Computers (ADUC), create an Organizational Unit (OU) called “_EMPLOYEES"
 
-![Inkedvivaldi_YgN8JfZgEn](https://user-images.githubusercontent.com/109401839/213217570-765d4e0f-05dd-4985-b6e5-0ce1210d6338.jpg)
+![](https://github.com/odiraonodugo/image/blob/main/v.png)
 
 5. Create a new OU named “_ADMINS"
 
@@ -106,7 +106,7 @@ Look at that beautiful traffic. Now its time to ...
 
 <h2>Join Client-1 to your domain (mydomain.com)<h2>
 
-![vivaldi_cRAVrKouac](https://user-images.githubusercontent.com/109401839/213221204-72c7058c-3730-47d9-b9fb-4435ee87c3fd.png)
+![](https://github.com/odiraonodugo/image/blob/main/g.png)
 
 1. From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address
 2. From the Azure Portal, restart Client-1
